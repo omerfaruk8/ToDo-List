@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="tr" ng-app="gorevUygulamasi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Görev Listesi</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body ng-controller="GorevKontrolcusu">
+    <div class="kapsayici">
+        <h1>Görev Listesi</h1>
+        <form ng-submit="gorevEkle()">
+            <input type="text" ng-model="yeniGorev" placeholder="Yeni görev" required>
+            <button type="submit">Ekle</button>
+        </form>
+        <ul>
+            <li ng-repeat="gorev in gorevler track by $index">
+                <span ng-class="{tamamlandi: gorev.tamamlandi}" ng-click="tamamDurumunuDegistir(gorev)">{{ gorev.ad }}</span>
+                <button ng-click="gorevSil($index)">Sil</button>
+            </li>
+        </ul>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
